@@ -1,34 +1,91 @@
 ##
-## EPITECH PROJECT, 2017
-## B-MUL-100 - My Hunter
+## EPITECH PROJECT, 2018
+## B-PSU-110 - Minishell 1
 ## File description:
-## Makefile for my_hunter
+## Makefile for Minishell 1
 ##
 
-RM	=	rm -rf
+BINARY_COLOR	=	\033[34;1m
 
-CC	=	gcc
+NORMAL		=	\033[0;0m
 
-CFLAGS	=	-Wall -Wextra -Werror
+IO_DIR		=	\033[0;33m
 
-NAME	=	bsq
+RM		=	rm -rf
 
-SRC	=	bsq.c	\
-		main.c
+CC		=	gcc
 
-OBJ	=	$(SRC:.c=.o)
+MAKE		=	make
+
+CPPFLAGS	+=	-I ./include -Wall -Wextra -g
+
+CFLAGS		+=
+
+LDFLAGS		+=	-L ./lib/my -lmy
+
+PROJECT_NAME	=	Biggest SQuare (BSQ)
+
+PROJECT_OWNERS	=	Warren HYPOLITE
+
+NAME		=	bsq
+
+SRCFILES	=	error_management.c	\
+			file.c			\
+			map_to_int_array.c	\
+			my_show_int_array.c	\
+			inverted_minesweeper.c	\
+			int_array_to_map.c	\
+			main.c
+
+SRCDIR		:=	./src
+
+OBJDIR		:=	./obj
+
+OUTDIR		:=	.
+
+SRC		=	$(addprefix $(SRCDIR)/, $(SRCFILES))
+
+OBJ		=	$(addprefix $(OBJDIR)/, $(SRCFILES:.c=.o))
+
+OUT		=	$(OUTDIR)/$(NAME)
+
+$(OBJDIR)/%.o:	$(SRCDIR)/%.c
+		@printf "%b" "$(NORMAL)"
+		$(CC) $(CPPFLAGS) $(CFLAGS) -c -o $@ $<
+
+all:		libs $(NAME)
 
 $(NAME):	$(OBJ)
-		$(CC) $(OBJ) -L./lib/my -lmy -o $(NAME)
+		@printf "%b" "$(NORMAL)"
+		$(CC) -o $(OUT) $(OBJ) $(LDFLAGS)
+		@echo
+		@echo -e "${BINARY_COLOR}#################################################"
+		@echo "#						#"
+		@echo "#	" "Compiling the binary >>>" $(NAME) "		#"
+		@echo "#						#"
+		@echo -e "#################################################"
+		@echo
+		@echo -e "\033[32;1m$(PROJECT_NAME) - $(PROJECT_OWNERS) \n\n\t COMPILATION SUCCEED \(^o^)/$(NORMAL)"
+		@echo
 
-all:		$(NAME)
+
+libs:
+		@printf "%b" "$(IO_DIR)"
+		$(MAKE) -C lib/my
 
 clean:
+
 		$(RM) $(OBJ)
+		@printf "%b" "$(IO_DIR)"
+		$(MAKE) clean -C lib/my
+		@printf "%b" "$(NORMAL)"
 
 fclean:		clean
-		$(RM) $(NAME)
+		$(RM) $(OUT)
+		@printf "%b" "$(IO_DIR)"
+		$(MAKE) fclean -C lib/my
+		@printf "%b" "$(NORMAL)"
 
-re:		fclean  all
+re:		fclean	all
 
 .PHONY:		all clean fclean re
