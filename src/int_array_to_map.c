@@ -25,12 +25,11 @@ char *biggest_square(char *file, int *map, int line)
 	int i = 0;
 	int *minesweeper = inverted_minesweeper(map, line);
 	int *new_map = place_neg(line, minesweeper);
-	
+
 	for (; file[i] != '\n'; i++);
 	i++;
-	for (int j = 0; file[i] != '\0'; i++, j++) {
+	for (int j = 0; file[i] != '\0'; i++, j++)
 		if (new_map[j] == -42)
 			file[i] = 'x';
-	}
 	return (file);
 }

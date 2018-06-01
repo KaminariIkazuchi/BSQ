@@ -23,11 +23,10 @@ int greater_value(int *map)
 	int i = 0;
 
 	for (; map[i] != -1; i++) {
-		if (greater < map[i]) {
+		if (greater < map[i])
 			greater = map[i];
 			pos = i;
 		}
-	}
 	return (pos);
 }
 
@@ -42,9 +41,8 @@ int *inverted_minesweeper(int *map, int line)
 		left = map[i - 1];
 		up = map[i - line];
 		diagonal = map[i - line - 1];
-		if (map[i] != 0 && left > 0 && up > 0 && diagonal > 0) {
+		if (map[i] != 0 && left > 0 && up > 0 && diagonal > 0)
 			map[i] = little_value(left, up, diagonal) + 1;
-		}
 	}
 	return (map);
 }
