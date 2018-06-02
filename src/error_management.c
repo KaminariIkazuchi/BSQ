@@ -10,11 +10,17 @@
 static int check_chars(char *map)
 {
 	int i = 0;
+	int nbr = 0;
 
 	for (i = 0; map[i] != '\n'; i++);
-	for (; map[i] != '\0'; i++)
+	for (; map[i] != '\0'; i++) {
 		if (map[i] != '.' && map[i] != 'o' && map[i] != '\n')
 			return (FAILURE);
+		if (map[i] == '.' && map[i] == 'o')
+			nbr++;
+	}
+	if (nbr == 0)
+		return (FAILURE);
 	return (SUCCESS);
 }
 
