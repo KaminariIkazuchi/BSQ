@@ -14,10 +14,13 @@ static int check_chars(char *map)
 
 	for (i = 0; map[i] != '\n'; i++);
 	for (; map[i] != '\0'; i++) {
+		if (map[i] == '.' && map[i] != 'o') {
+			nbr++;
+				my_put_nbr(nbr);
+		}
 		if (map[i] != '.' && map[i] != 'o' && map[i] != '\n')
 			return (FAILURE);
-		if (map[i] == '.' && map[i] == 'o')
-			nbr++;
+
 	}
 	if (nbr == 0)
 		return (FAILURE);
