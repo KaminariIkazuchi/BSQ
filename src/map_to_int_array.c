@@ -9,7 +9,7 @@
 
 static int line_size(char *map)
 {
-	int i = 0;
+	register int i = 0;
 	int nbr = 0;
 	int save = 0;
 

@@ -7,12 +7,6 @@
 
 #pragma once
 
-/* Structures */
-
-typedef struct s_env_s {
-	char *my_env;
-} s_env_t;
-
 /* Library */
 
 int my_putchar(char c);
@@ -24,3 +18,10 @@ int my_strncmp(char const *str1, char const *str2, int n);
 char *my_strdup(char const *src);
 char *my_strcat(char const *str, char const *str_2);
 char *epur_str(char *str);
+
+/* Enum */
+
+enum {
+	WRITE_FAILURE = 84,
+	WRITE_SUCCESS = 0
+};

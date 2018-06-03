@@ -18,6 +18,8 @@ static int check_chars(char *map)
 			return (FAILURE);
 		if (map[i] == '.' && map[i] != 'o')
 			nbr++;
+		if (map[i] == 'o' && map[i] != '.')
+			nbr++;
 	}
 	if (nbr == 0)
 		return (FAILURE);

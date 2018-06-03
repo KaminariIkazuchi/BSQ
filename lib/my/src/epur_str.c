@@ -1,8 +1,8 @@
 /*
 ** EPITECH PROJECT, 2018
-** B-CPE-110 - Minishell 1
+** B-CPE-110 - Biggest SQuare
 ** File description:
-** Epur Str
+** Remove useless spaces
 */
 
 #include <stdlib.h>

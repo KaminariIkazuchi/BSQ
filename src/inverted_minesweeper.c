@@ -18,9 +18,9 @@ static int little_value(int a, int b, int c)
 
 int greater_value(int *map)
 {
-	int greater = 0;
-	int pos = 0;
-	int i = 0;
+	register int greater = 0;
+	register int pos = 0;
+	register int i = 0;
 
 	for (i = 0; map[i] != -1; i++) {
 		if (greater < map[i]) {
@@ -33,10 +33,10 @@ int greater_value(int *map)
 
 int *inverted_minesweeper(int *map, int line)
 {
-	int i = line + 1;
-	int left = 0;
-	int up = 0;
-	int diagonal = 0;
+	register int i = line + 1;
+	register int left = 0;
+	register int up = 0;
+	register int diagonal = 0;
 
 	for (; map[i] != -1; i++) {
 		left = map[i - 1];

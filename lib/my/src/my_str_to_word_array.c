@@ -2,11 +2,11 @@
 ** EPITECH PROJECT, 2018
 ** B-MUL-100 - Minishell 1
 ** File description:
-** Str to Word Array
+** String to Word Array
 */
 
-#include "my.h"
 #include <stdlib.h>
+#include "my.h"
 
 static int count_sep(char const *str, char sep)
 {
@@ -23,13 +23,13 @@ char **str_to_word_array(char *str, char sep)
 	int x = 0;
 	int y = 0;
 	int i = 0;
-	int nbr_words = count_sep(str, sep) + 1;
-	char **arr = malloc(sizeof(char *) * (nbr_words + 1));
+	int words = count_sep(str, sep) + 1;
+	char **arr = malloc(sizeof(char *) * (words + 1));
 
 	if (arr == NULL)
 		return (NULL);
 	for (x = 0; str[i] != '\0'; i++) {
-		arr[x] = malloc(sizeof(char) * (my_strlen(str) - nbr_words + 2));
+		arr[x] = malloc(sizeof(char) * (my_strlen(str) - words + 2));
 		y = 0;
 		for (y = 0; str[i] != sep && ((str[i] >= 33 && str[i] <= 57)
 		|| (str[i] >= 59 && str[i] <= 126)); i++) {

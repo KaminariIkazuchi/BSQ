@@ -8,9 +8,7 @@
 #include <unistd.h>
 #include "my.h"
 
-static const int WRITE_FAILURE = 84;
-
 int my_putchar(char c)
 {
-	return (write(1, &c, 1) ? WRITE_FAILURE : 0);
+	return (write(1, &c, 1) ? WRITE_SUCCESS : WRITE_FAILURE);
 }
